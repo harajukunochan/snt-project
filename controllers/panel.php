@@ -1,0 +1,3 @@
+<?php
+
+only_logged();
