@@ -1,0 +1,48 @@
+<section class="bills">
+   <h4>Оплаченные счета</h4>
+   <h6>
+      <a href="/land/<?= $land['id'] ?>">
+         <?= $land['id'] ?>
+      </a>
+   </h6>
+   <ul>
+      <?php if ($bills && $bills->num_rows > 0) : ?>
+
+         <?php foreach ($bills as $bill) : ?>
+
+            <li class="bill_li">
+               <fieldset class="bill">
+                  <legend>
+                     <?= $bill['created_at'] ?>
+                  </legend>
+                  <p>Сумма: <b><?= $bill['sum'] ?> ₽</b></p>
+                  <?php if (isset($bill['comment'])) : ?>
+                     <p><?= $bill['comment'] ?></p>
+                  <?php endif; ?>
+
+                  <form method="post" class="bill_form">
+                     <input type="hidden" name="id_bill" value="<?= $bill['id'] ?>">
+                     <input type="hidden" name="action" value="reset">
+
+                     <input type="hidden" name="type" value="<?= $bill['type_payment'] ?>">
+                     <select disabled>
+                        <option value="clearing" <?= $bill['type_payment'] == 'clearing' ? 'selected' : '' ?>>Безнал</option>
+                        <option value="cash" <?= $bill['type_payment'] == 'cash' ? 'selected' : '' ?>>Нал</option>
+                     </select>
+
+                     <input class="delete" type="submit" name="submit" value="↻" />
+                  </form>
+               </fieldset>
+            </li>
+
+         <?php endforeach; ?>
+
+      <?php else : ?>
+
+         <li>
+            Нет оплаченных счетов.
+         </li>
+
+      <?php endif; ?>
+   </ul>
+</section>
