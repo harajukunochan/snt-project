@@ -1,1 +1,2 @@
-![](https://github.com/harajukunochan/snt-project/blob/main/snt.jpg)https://github.com/harajukunochan/snt-project/blob/main/snt.jpg)
+<img src="https://github.com/harajukunochan/snt-project/blob/main/snt.jpg" width="1280" height="460"/>
+
